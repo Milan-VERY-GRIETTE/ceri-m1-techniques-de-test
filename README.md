@@ -1,5 +1,13 @@
 # UCE Génie Logiciel Avancé : Techniques de tests
 
+## Badges (TP4)
+
+![namebadge](https://img.shields.io/static/v1?label=Nom&message=Milan%20VERY-GRIETTE&color=blue)
+![groupbadge](https://img.shields.io/static/v1?label=Groupe&message=ILSEN-ALT-Gr1&color=lightgrey)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/Milan-VERY-GRIETTE/ceri-m1-techniques-de-test/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/Milan-VERY-GRIETTE/ceri-m1-techniques-de-test/tree/master)
+[![codecov](https://codecov.io/gh/Milan-VERY-GRIETTE/ceri-m1-techniques-de-test/branch/master/graph/badge.svg?token=BD869Z8DSU)](https://codecov.io/gh/Milan-VERY-GRIETTE/ceri-m1-techniques-de-test)
+
+
 ## Introduction
 
 Vous allez à travers ces projet mettre en application une partie des aspects évoqués en cours vis à vis des techniques de tests.  
