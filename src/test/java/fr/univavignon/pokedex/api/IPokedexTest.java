@@ -35,7 +35,7 @@ public class IPokedexTest {
         Mockito.when(pokedex.getPokemon(any(Integer.class))).thenAnswer(mockData -> {
             int index = mockData.getArgument(0);
             if(index < 0 || index > pokemonList.size() - 1) {
-                throw new PokedexException("Invalid inex");
+                throw new PokedexException("Invalid index");
             }
             return pokemonList.get(mockData.getArgument(0));
         });

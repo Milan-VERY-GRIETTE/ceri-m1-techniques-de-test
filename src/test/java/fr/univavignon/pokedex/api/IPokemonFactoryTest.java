@@ -17,7 +17,7 @@ public class IPokemonFactoryTest {
         Mockito.when(pokemonFactory.createPokemon(anyInt(), anyInt(), anyInt(), anyInt(), anyInt())).thenAnswer(mockData ->  {
             int index = mockData.getArgument(0);
             if(index < 0 || index > 150) {
-                throw new PokedexException("Invalid inex");
+                throw new PokedexException("Invalid index");
             }
             return pokemon;
         });
