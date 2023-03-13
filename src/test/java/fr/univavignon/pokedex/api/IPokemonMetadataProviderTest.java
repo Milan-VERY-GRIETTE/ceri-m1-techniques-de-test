@@ -6,7 +6,7 @@ import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class IPokemonMetadataProviderTest {
+public class IPokemonMetadataProviderTest {
 
     IPokemonMetadataProvider metadataProvider = Mockito.mock(IPokemonMetadataProvider.class);
     PokemonMetadata bulbasaurMetadata = new PokemonMetadata(0,"Bulbizarre",126,126,90);

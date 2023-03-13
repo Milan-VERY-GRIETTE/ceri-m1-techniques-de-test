@@ -6,7 +6,7 @@ import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class IPokedexFactoryTest {
+public class IPokedexFactoryTest {
 
     IPokedexFactory pokedexFactory = Mockito.mock(IPokedexFactory.class);
     IPokemonMetadataProvider metadataProvider = Mockito.mock(IPokemonMetadataProvider.class);

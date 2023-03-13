@@ -11,7 +11,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
 
-class IPokedexTest {
+public class IPokedexTest {
 
     IPokedex pokedex = Mockito.mock(IPokedex.class);
     Pokemon bulbasaur = new Pokemon(0,"Bulbizarre",126,126,90,613,64,4000,4,56);

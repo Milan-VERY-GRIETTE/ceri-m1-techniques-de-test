@@ -7,7 +7,7 @@ import org.mockito.Mockito;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyInt;
 
-class IPokemonFactoryTest {
+public class IPokemonFactoryTest {
 
     IPokemonFactory pokemonFactory = Mockito.mock(IPokemonFactory.class);
     Pokemon pokemon = new Pokemon(0, "Pokemon", 1, 1, 1, 1, 1, 1, 1, 0);
