@@ -2,30 +2,30 @@ package fr.univavignon.pokedex.api;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.anyInt;
 
 public class IPokemonFactoryTest {
 
-    IPokemonFactory pokemonFactory = Mockito.mock(IPokemonFactory.class);
-    Pokemon pokemon = new Pokemon(0, "Pokemon", 1, 1, 1, 1, 1, 1, 1, 0);
+    IPokemonFactory pokemonFactory = new PokemonFactory();
+    Pokemon pokemon = new Pokemon(0, "Bulbizarre", 126, 126, 90, 1, 1, 1, 1, 0);
 
     @BeforeEach
-    public void setUp() {
-        Mockito.when(pokemonFactory.createPokemon(anyInt(), anyInt(), anyInt(), anyInt(), anyInt())).thenAnswer(mockData ->  {
-            int index = mockData.getArgument(0);
-            if(index < 0 || index > 150) {
-                throw new PokedexException("Invalid index");
-            }
-            return pokemon;
-        });
-    }
+    public void setUp() {}
 
     @Test
-    public void shouldGetPokemon() {
-        assertEquals(pokemon, pokemonFactory.createPokemon(0,1,1,1,1));
+    public void shouldGetPokemon() throws PokedexException {
+        Pokemon bulbasaur = pokemonFactory.createPokemon(0,1,1,1,1);
+
+        assertEquals(bulbasaur.getIndex(), pokemon.getIndex());
+        assertEquals(bulbasaur.getCp(), pokemon.getCp());
+        assertEquals(bulbasaur.getHp(), pokemon.getHp());
+        assertEquals(bulbasaur.getDust(), pokemon.getDust());
+        assertEquals(bulbasaur.getCandy(), pokemon.getCandy());
+        assertEquals(bulbasaur.getName(), pokemon.getName());
+        assertEquals(bulbasaur.getAttack(), pokemon.getAttack());
+        assertEquals(bulbasaur.getDefense(), pokemon.getDefense());
+        assertEquals(bulbasaur.getStamina(), pokemon.getStamina());
     }
 
     @Test
