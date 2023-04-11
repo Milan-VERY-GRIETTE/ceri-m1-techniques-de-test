@@ -108,7 +108,7 @@
                         </goals>
                         <configuration>
                             <skip>${badges.skip}</skip>
-                            <outputDir>target/site/badges</outputDir>
+                            <outputDir>docs/badges/</outputDir>
                             <inputFiles>
                                 <inputFile>target/pmd.xml</inputFile>
                                 <inputFile>target/findbugs-report.xml</inputFile>
