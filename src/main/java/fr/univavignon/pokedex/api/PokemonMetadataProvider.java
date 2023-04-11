@@ -2,6 +2,9 @@ package fr.univavignon.pokedex.api;
 
 import java.util.ArrayList;
 
+/**
+ * Implementation of PokemonMetadataProvider interface.
+ */
 public class PokemonMetadataProvider implements IPokemonMetadataProvider {
 
     private static PokemonMetadataProvider pmpInstance;
@@ -9,6 +12,9 @@ public class PokemonMetadataProvider implements IPokemonMetadataProvider {
 
     private PokemonMetadataProvider() {}
 
+    /**
+     * PokemonMetadataProvider singleton instance getter.
+     */
     public static synchronized PokemonMetadataProvider getInstance() {
         if (pmpInstance == null) {
             pmpInstance = new PokemonMetadataProvider();
@@ -33,7 +39,7 @@ public class PokemonMetadataProvider implements IPokemonMetadataProvider {
 
     @Override
     public PokemonMetadata getPokemonMetadata(int index) throws PokedexException {
-        if(index < 0 || index > pokemonMetadataList.size() - 1) {
+        if (index < 0 || index > pokemonMetadataList.size() - 1) {
             throw new PokedexException("Invalid index");
         }
         return pokemonMetadataList.get(index);

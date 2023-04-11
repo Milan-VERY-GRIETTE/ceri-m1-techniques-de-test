@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * Implementation of Pokedex interface.
+ */
 public class Pokedex implements IPokedex {
 
     private final IPokemonMetadataProvider metadataProvider;
@@ -28,7 +31,7 @@ public class Pokedex implements IPokedex {
 
     @Override
     public Pokemon getPokemon(int id) throws PokedexException {
-        if(id < 0 || id > pokemonList.size() - 1) {
+        if (id < 0 || id > pokemonList.size() - 1) {
             throw new PokedexException("Invalid index");
         }
         return pokemonList.get(id);
@@ -47,7 +50,13 @@ public class Pokedex implements IPokedex {
     }
 
     @Override
-    public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) throws PokedexException {
+    public Pokemon createPokemon(
+            int index,
+            int cp,
+            int hp,
+            int dust,
+            int candy
+    ) throws PokedexException {
         return this.pokemonFactory.createPokemon(index, cp, hp, dust, candy);
     }
 
