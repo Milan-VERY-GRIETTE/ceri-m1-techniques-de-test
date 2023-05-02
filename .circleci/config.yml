@@ -29,12 +29,18 @@ jobs:
           name: Test
           command: mvn test    
       - codecov/upload
+
+  docs:
+    docker:
+      - image: cimg/openjdk:19.0
+    steps:
+      - checkout
       - run:
           name: Docs-Build
           command: javadoc -d docs src/main/java/fr/univavignon/pokedex/api/* 
       - persist_to_workspace:
           root: .
-          paths: [docs]
+          paths: docs
 
   docs-deploy:
     docker:
@@ -67,6 +73,7 @@ workflows:
         filters:
           branches:
             only: master
+      - docs
       - docs-deploy:
           requires:
-            - build-and-test
+            - docs
