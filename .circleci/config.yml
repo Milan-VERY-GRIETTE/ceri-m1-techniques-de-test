@@ -29,27 +29,12 @@ jobs:
           name: Test
           command: mvn test    
       - codecov/upload
-
-  docs:
-    docker:
-      - image: cimg/base:2021.04
-    steps:
-      - checkout
       - run:
-          name: OpenJDK-PPA
-          command: sudo add-apt-repository ppa:openjdk-r/ppa
-      - run:
-          name: Update
-          command: sudo apt-get update
-      - run:
-          name: OpenJDK-Install
-          command: sudo apt-get install openjdk-11-jdk-headless -y
-      - run:
-          name: Doc-Build
+          name: Docs-Build
           command: javadoc -d docs src/main/java/fr/univavignon/pokedex/api/* 
       - persist_to_workspace:
           root: .
-          paths: [docs]
+          paths: docs
 
   docs-deploy:
     docker:
@@ -63,7 +48,7 @@ jobs:
           command: |
             npm install -g --silent gh-pages@3.0.0
             git config user.email "90772567+Milan-VERY-GRIETTE@users.noreply.github.com"
-            git config user.name "Milan VERY-GRIETTE"
+            git config user.name "Milan-VERY-GRIETTE"
       - add_ssh_keys:
           fingerprints:
             - "91:24:d7:c8:12:7b:92:1d:3e:dd:ef:81:a3:d5:95:a2"
@@ -82,7 +67,6 @@ workflows:
         filters:
           branches:
             only: master
-      - docs
       - docs-deploy:
           requires:
-            - docs
+            - build-and-test
