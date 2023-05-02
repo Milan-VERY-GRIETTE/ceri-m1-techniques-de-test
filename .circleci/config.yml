@@ -29,6 +29,28 @@ jobs:
           name: Test
           command: mvn test    
       - codecov/upload
+      
+  docs-deploy:
+    docker:
+      - image: node:20
+    steps:
+      - checkout
+      - attach_workspace:
+          at: docs/
+      - run:
+          name: Install and configure dependencies
+          command: |
+            npm install -g --silent gh-pages@5.0.0
+            git config user.email "90772567+Milan-VERY-GRIETTE@users.noreply.github.com"
+            git config user.name "Milan VERY-GRIETTE"
+            javadoc -d docs src\main\java\fr\univavignon\pokedex\api\*.java
+      - add_ssh_keys:
+          fingerprints:
+            - "91:24:d7:c8:12:7b:92:1d:3e:dd:ef:81:a3:d5:95:a2"
+      - run:
+          name: Deploy docs to gh-pages branch
+          command: gh-pages --dist docs/
+
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -40,3 +62,6 @@ workflows:
         filters:
           branches:
             only: master
+      - docs-deploy:
+          requires:
+            - build-and-test
