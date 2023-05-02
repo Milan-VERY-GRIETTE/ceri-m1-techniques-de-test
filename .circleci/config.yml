@@ -32,9 +32,18 @@ jobs:
 
   docs:
     docker:
-      - image: cimg/openjdk:19.0
+      - image: cimg/base:2021.04
     steps:
       - checkout
+      - run:
+          name: OpenJDK-PPA
+          command: sudo add-apt-repository ppa:openjdk-r/ppa
+      - run:
+          name: Update
+          command: sudo apt-get update
+      - run:
+          name: OpenJDK-Install
+          command: sudo apt-get install openjdk-11-jdk-headless -y
       - run:
           name: Docs-Build
           command: javadoc -d docs src/main/java/fr/univavignon/pokedex/api/* 
