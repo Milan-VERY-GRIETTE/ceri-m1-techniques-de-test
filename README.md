@@ -8,6 +8,10 @@
 [![codecov](https://codecov.io/gh/Milan-VERY-GRIETTE/ceri-m1-techniques-de-test/branch/master/graph/badge.svg?token=BD869Z8DSU)](https://codecov.io/gh/Milan-VERY-GRIETTE/ceri-m1-techniques-de-test)
 ![Checkstyle](docs/badges/checkstyle-result.svg)
 
+## Documentation
+
+[Accès à la documentation (Github Pages)](https://milan-very-griette.github.io/ceri-m1-techniques-de-test/fr/univavignon/pokedex/api/package-summary.html)
+
 ## Introduction
 
 Vous allez à travers ces projet mettre en application une partie des aspects évoqués en cours vis à vis des techniques de tests.  
