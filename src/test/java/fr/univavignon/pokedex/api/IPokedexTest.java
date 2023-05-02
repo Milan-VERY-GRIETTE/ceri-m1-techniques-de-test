@@ -44,7 +44,12 @@ public class IPokedexTest {
     }
 
     @Test
-    public void shouldThrowPokedexExceptionWhenIndexOutOfBounds() {
+    public void shouldThrowPokedexExceptionWhenLowBound() {
+        assertThrows(PokedexException.class, () -> pokedex.getPokemon(-1));
+    }
+
+    @Test
+    public void shouldThrowPokedexExceptionWhenHighBound() {
         assertThrows(PokedexException.class, () -> pokedex.getPokemon(1));
     }
 
@@ -71,7 +76,7 @@ public class IPokedexTest {
         List<Pokemon> list = pokedex.getPokemons(PokemonComparators.INDEX);
         assertEquals(bulbasaur.getIndex(), list.get(0).getIndex());
     }
-    
+
     @Test
     public void shouldCreatePokemon() throws PokedexException {
         Pokemon createdBulbasaur = pokedex.createPokemon(0,613, 64,4000, 4);
