@@ -14,6 +14,13 @@ public class IPokedexTest {
     IPokedex pokedex;
     Pokemon bulbasaur = new Pokemon(0,"Bulbizarre",126,126,90,613,64,4000,4,56);
     Pokemon vaporeon = new Pokemon(133,"Aquali",186,168,260,2729,202,5000,4,100);
+    PokemonMetadata bulbasaurMetadata = new PokemonMetadata(
+            bulbasaur.getIndex(),
+            bulbasaur.getName(),
+            bulbasaur.getAttack(),
+            bulbasaur.getDefense(),
+            bulbasaur.getStamina()
+    );
 
     @BeforeEach
     public void setUp() {
@@ -59,19 +66,34 @@ public class IPokedexTest {
 
     @Test
     public void shouldSortList(){
-        Comparator<Pokemon> comparator = (o1, o2) -> {
-            if (o1.getIndex() < o2.getIndex()){
-                return -1;
-            }
-            else if (o1.getIndex() == o2.getIndex()) {
-                return 0;
-            }
-            return 0;
-        };
         pokedex.addPokemon(vaporeon);
         pokedex.addPokemon(bulbasaur);
-        List<Pokemon> list = pokedex.getPokemons(comparator);
+        List<Pokemon> list = pokedex.getPokemons(PokemonComparators.INDEX);
         assertEquals(bulbasaur.getIndex(), list.get(0).getIndex());
+    }
+    
+    @Test
+    public void shouldCreatePokemon() throws PokedexException {
+        Pokemon createdBulbasaur = pokedex.createPokemon(0,613, 64,4000, 4);
+        assertEquals(bulbasaur.getIndex(), createdBulbasaur.getIndex());
+        assertEquals(bulbasaur.getCp(), createdBulbasaur.getCp());
+        assertEquals(bulbasaur.getHp(), createdBulbasaur.getHp());
+        assertEquals(bulbasaur.getDust(), createdBulbasaur.getDust());
+        assertEquals(bulbasaur.getCandy(), createdBulbasaur.getCandy());
+        assertEquals(bulbasaur.getName(), createdBulbasaur.getName());
+        assertEquals(bulbasaur.getAttack(), createdBulbasaur.getAttack());
+        assertEquals(bulbasaur.getDefense(), createdBulbasaur.getDefense());
+        assertEquals(bulbasaur.getStamina(), createdBulbasaur.getStamina());
+    }
+
+    @Test
+    public void shouldPokemonMetadata() throws PokedexException {
+        PokemonMetadata createdBulbasaurMetadata = pokedex.getPokemonMetadata(0);
+        assertEquals(bulbasaurMetadata.getIndex(), createdBulbasaurMetadata.getIndex());
+        assertEquals(bulbasaurMetadata.getName(), createdBulbasaurMetadata.getName());
+        assertEquals(bulbasaurMetadata.getAttack(), createdBulbasaurMetadata.getAttack());
+        assertEquals(bulbasaurMetadata.getDefense(), createdBulbasaurMetadata.getDefense());
+        assertEquals(bulbasaurMetadata.getStamina(), createdBulbasaurMetadata.getStamina());
     }
 
 }

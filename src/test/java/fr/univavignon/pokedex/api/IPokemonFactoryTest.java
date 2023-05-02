@@ -26,6 +26,7 @@ public class IPokemonFactoryTest {
         assertEquals(bulbasaur.getAttack(), pokemon.getAttack());
         assertEquals(bulbasaur.getDefense(), pokemon.getDefense());
         assertEquals(bulbasaur.getStamina(), pokemon.getStamina());
+        assertEquals(50, pokemon.getIv(), 50);
     }
 
     @Test
