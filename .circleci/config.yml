@@ -42,6 +42,9 @@ jobs:
           name: OpenJDK-Install
           command: sudo apt-get -y install openjdk-17-jdk 
       - run:
+          name: Java Classpath
+          command: export CLASSPATH=$CLASSPATH:common-collections4.jar
+      - run:
           name: Docs-Build
           command: javadoc -d docs src/main/java/fr/univavignon/pokedex/api/* 
       - persist_to_workspace:
