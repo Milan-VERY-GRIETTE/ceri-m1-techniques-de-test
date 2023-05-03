@@ -29,27 +29,9 @@ jobs:
           name: Test
           command: mvn test    
       - codecov/upload
-
-  docs:
-    docker:
-      - image: cimg/base:2021.04
-    steps:
-      - checkout
       - run:
-          name: Update
-          command: sudo apt-get update
-      - run:
-          name: OpenJDK-Install
-          command: sudo apt-get -y install openjdk-17-jdk 
-      - run:
-          name: Java Classpath
-          command: export CLASSPATH=$CLASSPATH:common-collections4.jar
-      - run:
-          name: Docs-Build
-          command: javadoc -d docs src/main/java/fr/univavignon/pokedex/api/* 
-      - persist_to_workspace:
-          root: .
-          paths: docs
+          name: Javadoc
+          command: mvn -B -DskipTests javadoc:javadoc
 
   docs-deploy:
     docker:
@@ -57,7 +39,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: docs/
+          at: docs/_build
       - run:
           name: Install and configure dependencies
           command: |
@@ -69,7 +51,7 @@ jobs:
             - "91:24:d7:c8:12:7b:92:1d:3e:dd:ef:81:a3:d5:95:a2"
       - run:
           name: Deploy docs to gh-pages branch
-          command: gh-pages --dist docs/
+          command: gh-pages --dist target/site/apidocs/
 
 
 # Invoke jobs via workflows
@@ -82,7 +64,6 @@ workflows:
         filters:
           branches:
             only: master
-      - docs
       - docs-deploy:
           requires:
-            - docs
+            - build-and-test
