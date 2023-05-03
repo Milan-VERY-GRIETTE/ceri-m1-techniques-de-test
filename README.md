@@ -34,6 +34,10 @@ Une étude rapide du code proposé par la Team Rocket permet d'identifier un aut
 Le problème concerne la génération des statistiques des Pokémons (Attaque, Défense, Stamina et IV).
 En effet, la génération de l'Attaque, de la Défense et de la Stamina est aléatoire, ce qui ne correspond pas aux valeurs réelles des Pokémons. De plus, la valeur de l'IV est de soit 0, soit de 1, ce qui ne correspond pas non plsu aux critères réels.
 
+### Étape 3 : Refonte des tests
+
+Les tests de l'implémentation RocketPokemonFactory ont été remaniés pour correspondre aux spécificités du code de ce dernier.
+
 ## Introduction
 
 Vous allez à travers ces projet mettre en application une partie des aspects évoqués en cours vis à vis des techniques de tests.  
