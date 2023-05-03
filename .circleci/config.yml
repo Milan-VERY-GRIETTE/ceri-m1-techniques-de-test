@@ -86,3 +86,15 @@ workflows:
       - docs-deploy:
           requires:
             - docs
+            
+build-deploy:
+  jobs:
+    - build :
+        filters:
+          branches:
+            only : main
+
+  maven_test:
+    jobs:
+      - maven/test:
+          command: '-X verify'
