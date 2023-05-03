@@ -82,22 +82,8 @@ workflows:
         filters:
           branches:
             only: master
-      - docs:
-          requires:
-          - build-and-test
+      - docs
       - docs-deploy:
           requires:
-            - build-and-test
             - docs
             
-build-deploy:
-  jobs:
-    - build :
-        filters:
-          branches:
-            only : main
-
-  maven_test:
-    jobs:
-      - maven/test:
-          command: '-X verify'
