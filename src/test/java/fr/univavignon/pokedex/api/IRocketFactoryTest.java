@@ -15,38 +15,23 @@ public class IRocketFactoryTest {
 
     @Test
     public void shouldGetPokemonWithAbnormalStats() throws PokedexException {
-// Le code ci-dessous est commenté en raison d'une erreur se produisant uniquement lors de
-// la génération de la javadoc sur CircleCI, et relatif au type de Map choisie par la Team Rocket
-// ainsi que sa librairie "org.apache.commons.collections4.map.UnmodifiableMap".
-// Le code fonctionne normalement sur un poste local et peut être décommenté.
-//
-//        Pokemon bulbasaur = rocketFactory.createPokemon(0,1,1,1,1);
-//
-//        assertEquals(bulbasaur.getIndex(), pokemon.getIndex());
-//        assertEquals(bulbasaur.getCp(), pokemon.getCp());
-//        assertEquals(bulbasaur.getHp(), pokemon.getHp());
-//        assertEquals(bulbasaur.getDust(), pokemon.getDust());
-//        assertEquals(bulbasaur.getCandy(), pokemon.getCandy());
+        Pokemon bulbasaur = rocketFactory.createPokemon(0,1,1,1,1);
+
+        assertEquals(bulbasaur.getIndex(), pokemon.getIndex());
+        assertEquals(bulbasaur.getCp(), pokemon.getCp());
+        assertEquals(bulbasaur.getHp(), pokemon.getHp());
+        assertEquals(bulbasaur.getDust(), pokemon.getDust());
+        assertEquals(bulbasaur.getCandy(), pokemon.getCandy());
     }
 
     @Test
     public void shouldNotThrowPokedexExceptionWhenIndexTooLow() {
-// Le code ci-dessous est commenté en raison d'une erreur se produisant uniquement lors de
-// la génération de la javadoc sur CircleCI, et relatif au type de Map choisie par la Team Rocket
-// ainsi que sa librairie "org.apache.commons.collections4.map.UnmodifiableMap".
-// Le code fonctionne normalement sur un poste local et peut être décommenté.
-//
-//        assertDoesNotThrow(() -> rocketFactory.createPokemon(-1,1,1,1,1));
+        assertDoesNotThrow(() -> rocketFactory.createPokemon(-1,1,1,1,1));
     }
 
     @Test
     public void shouldNotThrowPokedexExceptionWhenIndexTooHigh() {
-// Le code ci-dessous est commenté en raison d'une erreur se produisant uniquement lors de
-// la génération de la javadoc sur CircleCI, et relatif au type de Map choisie par la Team Rocket
-// ainsi que sa librairie "org.apache.commons.collections4.map.UnmodifiableMap".
-// Le code fonctionne normalement sur un poste local et peut être décommenté.
-//
-//        assertDoesNotThrow(() -> rocketFactory.createPokemon(151,1,1,1,1));
+        assertDoesNotThrow(() -> rocketFactory.createPokemon(151,1,1,1,1));
     }
 
 }

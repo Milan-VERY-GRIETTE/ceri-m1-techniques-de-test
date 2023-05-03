@@ -71,7 +71,7 @@ public class RocketPokemonFactory implements IPokemonFactory {
 //			iv = 1;
 //		}
 //		return new Pokemon(index, name, attack, defense, stamina, cp, hp, dust, candy, iv);
-		return null;
+		return new Pokemon(index, "", 0, 0, 0, cp, hp, dust, candy, 0);
 	}
 
 }
