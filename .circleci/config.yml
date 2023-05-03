@@ -82,9 +82,12 @@ workflows:
         filters:
           branches:
             only: master
-      - docs
+      - docs:
+          requires:
+          - build-and-test
       - docs-deploy:
           requires:
+            - build-and-test
             - docs
             
 build-deploy:
